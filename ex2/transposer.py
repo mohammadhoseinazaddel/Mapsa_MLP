@@ -5,8 +5,7 @@ def trnsfering_matrix(mat2):
         result.append([])
         for row in range(m):
             result[col].append(mat2[row][col])
-    print(result)
     return result
 
 if __name__ == '__main__':
-    trnsfering_matrix([[3,2],[6,13]])
+    print(trnsfering_matrix([[3,2],[6,13]]))
