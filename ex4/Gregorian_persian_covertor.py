@@ -2,6 +2,8 @@ from functools import reduce
 
 
 def persian_to_georgian(year, month, day):
+    # replaced my code with better nastaran`s code
+    # https://github.com/nastaransh/ML-preebootcamp/blob/main/session4_hw/calender.py
     count = 0
     JanFarDif = 79
     converted_day = 0
@@ -33,6 +35,8 @@ def persian_to_georgian(year, month, day):
     return converted_day, converted_month, converted_year
 
 def georgian_to_persian(year, month, day):
+    # replaced my code with better nastaran`s code
+    # https://github.com/nastaransh/ML-preebootcamp/blob/main/session4_hw/calender.py
     day_month_miladi, diff_day = goergian_kabise(year)
     if month == 1:
         passed_days = day
