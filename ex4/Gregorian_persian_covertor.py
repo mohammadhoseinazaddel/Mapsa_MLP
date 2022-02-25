@@ -127,8 +127,11 @@ def convertor(date, type):
 
 
 if __name__ == '__main__':
-
+    # georgian_ex dd/mm/yyyy
+    # persian_ex yyyy/mm/dd
     convertor("1399-2-2","m")
+    convertor("4-6-2020","j")
+    convertor("21-4-2020", "j")
 
 
 
