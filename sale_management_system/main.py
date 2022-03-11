@@ -20,7 +20,7 @@ if __name__ == "__main__":
     print(test_acount)
 
 
-    test_site = Site("google.com",[],[])
+    test_site = Site("google.com")
     test_site.register(test_acount)
     # test_site.register(test_acount) #already registered error
 

@@ -56,10 +56,14 @@ class Account():
 
 class Site():
 
-    def __init__(self, url, register_users, active_users):
+    def __init__(self, url, register_users=None, active_users=None):
+        if active_users is None:
+            active_users = []
+        if register_users is None:
+            register_users = []
         self.url=url
-        self.register_users=[]
-        self.active_users=[]
+        self.register_users=register_users
+        self.active_users=active_users
 
 
     def register(self,user):
