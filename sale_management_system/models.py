@@ -83,12 +83,19 @@ class Site():
                 msg=self.__check_pass_do_login(user, password)
         print(msg)
 
-    @staticmethod
-    def __login_check(site, user):
-        if user in site.active_users:
+    def __check_pass_do_login(self, user, password):
+        global login_msg
+        if user.password == hasher(password):
+            login_msg = self.__login_check(user)
+        else:
+            login_msg = "invalid login"
+        return login_msg
+
+    def __login_check(self, user):
+        if user in self.active_users:
             return "user already logged in"
         else:
-            site.active_users.append(user)
+            self.active_users.append(user)
             return "login successful"
 
     def logout(self,user):
@@ -98,12 +105,3 @@ class Site():
         else:
             print("user is not login")
 
-    def __check_pass_do_login(self, user, password):
-        global login_msg
-        if user.password == hasher(password):
-            login_msg = Site.__login_check(self, user)
-
-        else:
-            login_msg = "invalid login"
-
-        return login_msg
