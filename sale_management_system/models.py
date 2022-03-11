@@ -75,20 +75,12 @@ class Site():
         # if user in cls.users_register
 
     def login(self, password,email=None,username=None):
-
-        if email==None:
-            for user in self.register_users:
-                if user.username == username :
-                    msg=self.check_pass_do_login(user, password)
-
-        elif username==None:
-            for user in self.register_users:
-                if user.Email == email:
-                    msg=self.check_pass_do_login(user, password)
-        else:
-            for user in self.register_users:
-                if user.Email == email and user.username == username:
-                    msg=self.check_pass_do_login(user, password)
+        global msg
+        for user in self.register_users:
+            if (email==None and user.username == username) \
+                    or (username==None and user.Email == email) \
+                    or (user.Email == email and user.username == username):
+                msg=self.__check_pass_do_login(user, password)
         print(msg)
 
     @staticmethod
@@ -106,7 +98,7 @@ class Site():
         else:
             print("user is not login")
 
-    def check_pass_do_login(self, user, password):
+    def __check_pass_do_login(self, user, password):
         global login_msg
         if user.password == hasher(password):
             login_msg = Site.__login_check(self, user)
