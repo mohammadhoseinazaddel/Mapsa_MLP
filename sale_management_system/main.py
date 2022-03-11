@@ -24,9 +24,11 @@ if __name__ == "__main__":
     test_site.register(test_acount)
     # test_site.register(test_acount) #already registered error
 
-    test_site.login(email=Email,username=username,password=password)
-    test_site.login(email=Email,password=password)
-    test_site.login(username=username,password=password)
 
+    test_site.login(email=Email,password=password) #success login
+    test_site.login(username=username,password=password) #user already logged in
+    test_site.login(email=Email, username=username, password=password) #user already logged in
+    test_site.login("dasd",username=username) #invalid login
 
-    test_site.logout(test_acount)
+    test_site.logout("test_acount") #user is not login
+    test_site.logout(test_acount) #logout seccessful
