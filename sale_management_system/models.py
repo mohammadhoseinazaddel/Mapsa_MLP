@@ -75,30 +75,24 @@ class Site():
         # if user in cls.users_register
 
     def login(self, password,email=None,username=None):
-        global login_msg
+
         if email==None:
             for user in self.register_users:
-                if user.username == username and user.password == hasher(password):
-                    login_msg=Site.login_check(self, user)
-                else:
-                    login_msg= "invalid login"
+                if user.username == username :
+                    msg=self.check_pass_do_login(user, password)
 
         elif username==None:
             for user in self.register_users:
-                if user.Email == email and user.password == hasher(password):
-                    login_msg=Site.login_check(self, user)
-                else:
-                    login_msg = "invalid login"
+                if user.Email == email:
+                    msg=self.check_pass_do_login(user, password)
         else:
             for user in self.register_users:
-                if user.Email == email and user.username == username and user.password == hasher(password):
-                    login_msg=Site.login_check(self, user)
-                else:
-                    login_msg = "invalid login"
-        print(login_msg)
+                if user.Email == email and user.username == username:
+                    msg=self.check_pass_do_login(user, password)
+        print(msg)
 
     @staticmethod
-    def login_check(site,user):
+    def __login_check(site, user):
         if user in site.active_users:
             return "user already logged in"
         else:
@@ -111,3 +105,13 @@ class Site():
             print("logout seccessful")
         else:
             print("user is not login")
+
+    def check_pass_do_login(self, user, password):
+        global login_msg
+        if user.password == hasher(password):
+            login_msg = Site.__login_check(self, user)
+
+        else:
+            login_msg = "invalid login"
+
+        return login_msg
