@@ -72,15 +72,18 @@ class Site():
 
     def login(self, password,email=None,username=None):
         if email==None:
-            username_register(self,username,password)
+            for user in self.register_users:
+                if user.Email == email and user.password == hasher(password):
+                    self.active_users.append(user)
         elif username==None:
-            email_register(self,username,password)
-
+            for user in self.register_users:
+                if user.username == username and user.password == hasher(password):
+                    self.active_users.append(user)
         else:
+            for user in self.register_users:
+                if user.Email == email and user.username == username and user.password == hasher(password):
+                    self.active_users.append(user)
 
-
-        # for user in self.register_users:
-        #     if user.Email == email
 
 
     def logout(self,user):
