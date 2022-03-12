@@ -39,6 +39,7 @@ def phone_checker_09(phone):
 
 def _email_First_part_and_second_part_checher(part):
    return re.match(r'^[0-9A-Za-z.-_]*$',part)
+                # or [\w.-]*$
 
 
 def _email_third_part_checker(part):
